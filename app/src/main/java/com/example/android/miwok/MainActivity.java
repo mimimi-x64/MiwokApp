@@ -39,48 +39,52 @@ public class MainActivity extends AppCompatActivity {
         TextView numbers = (TextView) findViewById(R.id.numbers);
 
         //Add Listener to view
-        numbers.setOnClickListener(new View.OnClickListener(){
+        if (numbers != null) {
+            numbers.setOnClickListener(new OnClickListener(){
 
-            @Override
-            public void onClick(View view){
-                //Criar um novo Intent
-                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
-                startActivity(numbersIntent);
-            }
-        });
+                @Override
+                public void onClick(View view){
+                    //Criar um novo Intent
+                    Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+                    startActivity(numbersIntent);
+                }
+            });
+        }
 
         // Listener Button for ColorsActivity
         TextView colors = (TextView) findViewById(R.id.colors);
-        colors.setOnClickListener(new View.OnClickListener(){
+        if (colors != null) {
+            colors.setOnClickListener(new OnClickListener(){
 
-            @Override
-            public void onClick(View view){
-                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-                startActivity(colorsIntent);
-            }
-        });
+                @Override
+                public void onClick(View view){
+                    Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
+                    startActivity(colorsIntent);
+                }
+            });
+        }
 
         // Listener Button for PhrasesActivity
         TextView phrases = (TextView) findViewById(R.id.phrases);
-        phrases.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(phrasesIntent);
-            }
-        });
+        if (phrases != null) {
+            phrases.setOnClickListener(new OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+                    startActivity(phrasesIntent);
+                }
+            });
+        }
 
         //Listener Button for Family
         TextView family = (TextView) findViewById(R.id.family);
-        family.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
-                startActivity(familyIntent);
-            }
-        });
-
-        // Set the content of the activity to use the activity_main.xml layout file
-        setContentView(R.layout.activity_main);
+        if (family != null) {
+            family.setOnClickListener(new OnClickListener(){
+                public void onClick(View view){
+                    Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                    startActivity(familyIntent);
+                }
+            });
+        }
     }
-
 }
