@@ -18,18 +18,23 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        // Create a list of words
-        ArrayList<String> words = new ArrayList<String>();
-        words.add("one");
-        words.add("two");
-        words.add("three");
-        words.add("four");
-        words.add("five");
-        words.add("six");
-        words.add("seven");
-        words.add("eight");
-        words.add("nine");
-        words.add("ten");
+        // Create a list of words using Word.class
+        ArrayList<Word> words = new ArrayList<Word>();
+        //Instanciates Object with values
+        Word w = new Word("lutti", "one");
+        //Add on ArrayList
+        words.add(w);
+
+//        words.add("one");
+//        words.add("two");
+//        words.add("three");
+//        words.add("four");
+//        words.add("five");
+//        words.add("six");
+//        words.add("seven");
+//        words.add("eight");
+//        words.add("nine");
+//        words.add("ten");
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
