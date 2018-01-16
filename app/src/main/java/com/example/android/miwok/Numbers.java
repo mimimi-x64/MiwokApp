@@ -1,20 +1,18 @@
 package com.example.android.miwok;
 
-import android.content.Context;
-
 /**
- * Created by phartmann on 13/01/2018.
+ * Create a class to store Translations and Default Colors
  */
 
-public class Word {
+public class Numbers {
 
     private String mDefaulTranslation;
 
     private String mMiwokTranslation;
 
-    public Word( String MiwokTranslation, String DefaulTranslation) {
-        mDefaulTranslation = DefaulTranslation;
+    public Numbers( String MiwokTranslation, String DefaulTranslation) {
         mMiwokTranslation = MiwokTranslation;
+        mDefaulTranslation = DefaulTranslation;
     }
 
     public String getDefaulTranslation(){
