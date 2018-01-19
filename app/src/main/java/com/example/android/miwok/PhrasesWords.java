@@ -9,7 +9,7 @@ public class PhrasesWords {
     private String mMiwok;
     private String mDefault;
     //Constructor
-    public PhrasesWords(String miwokWords, String defaulWords){
+    public PhrasesWords( String miwokWords, String defaulWords){
         mMiwok = miwokWords;
         mDefault = defaulWords;
     }

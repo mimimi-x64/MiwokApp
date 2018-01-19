@@ -14,22 +14,22 @@ public class ColorsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_colors);
 
         //First, Create a ArrayList and put some data man!
-        ArrayList<Colors> colors = new ArrayList<Colors>();
+        ArrayList<Words> colors = new ArrayList<Words>();
 
         //Add on ArrayList
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
-        colors.add(new Colors("lutti", "one"));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
+        colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
 
         //Instaciate a objeact to inflate two textview instead of one
-        ColorsAdapter colorsAdapter = new ColorsAdapter(this, colors);
+        WordsAdapter colorsAdapter = new WordsAdapter(this, colors);
 
         ListView listView = (ListView) findViewById(R.id.list);
 

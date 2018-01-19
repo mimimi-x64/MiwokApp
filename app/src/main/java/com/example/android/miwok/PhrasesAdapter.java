@@ -24,7 +24,7 @@ public class PhrasesAdapter extends ArrayAdapter<PhrasesWords> {
         View listItemView = convertView;
         if (listItemView == null){
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
+                    R.layout.list_item_phrases, parent, false);
         }
 
         PhrasesWords currentWord = getItem(position);

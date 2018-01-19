@@ -16,21 +16,21 @@ public class FamilyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_family);
 
         //Instanciates an ArrayList
-        ArrayList<FamillyWords> famillyArray= new ArrayList<FamillyWords>();
+        ArrayList<Words> famillyArray= new ArrayList<Words>();
 
         //Supply Array
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
-        famillyArray.add(new FamillyWords("one", "two") );
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
+        famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
 
-        FamillyAdapter famillyAdapter = new FamillyAdapter(this, famillyArray);
+        WordsAdapter famillyAdapter = new WordsAdapter(this, famillyArray);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
