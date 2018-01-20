@@ -10,7 +10,9 @@ public class Words {
 
     private String mMiwokTranslation;
 
-    private int mImageResourceID;
+    private int mImageResourceID = NO_IMAGE;
+
+    private static final int NO_IMAGE = -1;
 
     public Words( String MiwokTranslation, String DefaulTranslation ){
         mMiwokTranslation = MiwokTranslation;
@@ -31,4 +33,6 @@ public class Words {
     }
 
     public int getImageResource(){ return mImageResourceID; }
+
+    public boolean checkImageResource() {return mImageResourceID != NO_IMAGE; }
 }

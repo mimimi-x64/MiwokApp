@@ -29,7 +29,7 @@ public class ColorsActivity extends AppCompatActivity {
         colors.add(new Words("lutti", "one", R.mipmap.ic_launcher));
 
         //Instaciate a objeact to inflate two textview instead of one
-        WordsAdapter colorsAdapter = new WordsAdapter(this, colors);
+        WordsAdapter colorsAdapter = new WordsAdapter(this, colors, R.color.category_colors);
 
         ListView listView = (ListView) findViewById(R.id.list);
 

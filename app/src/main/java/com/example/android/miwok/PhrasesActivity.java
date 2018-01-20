@@ -13,20 +13,20 @@ public class PhrasesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrases);
 
-        ArrayList<PhrasesWords> phrasesWords = new ArrayList<PhrasesWords>();
+        ArrayList<Words> phrasesWords = new ArrayList<Words>();
 
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
-        phrasesWords.add(new PhrasesWords("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
+        phrasesWords.add(new Words("one", "two"));
         //Instacietates Object and Use on XML
-        PhrasesAdapter phWords = new PhrasesAdapter(this, phrasesWords);
+        WordsAdapter phWords = new WordsAdapter(this, phrasesWords, R.color.category_phrases);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(phWords);
     }

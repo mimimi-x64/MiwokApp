@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,12 +18,15 @@ import java.util.ArrayList;
 
 public class WordsAdapter extends ArrayAdapter<Words> {
 
-    public WordsAdapter( Activity context, ArrayList<Words> Numbers) {
+    private int mCategoryColors;
+
+    public WordsAdapter( Activity context, ArrayList<Words> Words, int categoryColors ) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
-        super(context, 0, Numbers);
+        super(context, 0, Words);
+        mCategoryColors = categoryColors;
     }
 
     @Override
@@ -31,6 +36,7 @@ public class WordsAdapter extends ArrayAdapter<Words> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext( )).inflate(
                     R.layout.list_item, parent, false);
+            listItemView.setBackgroundResource(mCategoryColors);
         }
 
         // Get the {@link AndroidFlavor} object located at this position in the list
@@ -52,8 +58,14 @@ public class WordsAdapter extends ArrayAdapter<Words> {
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.imageList);
         // Get the image resource ID from the current AndroidFlavor object and
         // set the image to iconView
-        iconView.setImageResource(currentWord.getImageResource( ));
+        iconView.setImageResource( currentWord.getImageResource( ));
 
+        if (currentWord.checkImageResource()){
+            iconView.setImageResource( currentWord.getImageResource( ));
+            iconView.setVisibility(View.VISIBLE);
+        } else {
+            iconView.setVisibility(View.GONE);
+        }
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
         return listItemView;

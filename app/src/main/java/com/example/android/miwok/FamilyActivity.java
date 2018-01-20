@@ -2,11 +2,9 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FamilyActivity extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class FamilyActivity extends AppCompatActivity {
         famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
         famillyArray.add(new Words("one", "two", R.mipmap.ic_launcher));
 
-        WordsAdapter famillyAdapter = new WordsAdapter(this, famillyArray);
+        WordsAdapter famillyAdapter = new WordsAdapter(this, famillyArray, R.color.category_family);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
