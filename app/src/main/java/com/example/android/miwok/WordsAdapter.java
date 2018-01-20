@@ -1,11 +1,14 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,8 +22,9 @@ import java.util.ArrayList;
 public class WordsAdapter extends ArrayAdapter<Words> {
 
     private int mCategoryColors;
+    MediaPlayer mediaPlayer;
 
-    public WordsAdapter( Activity context, ArrayList<Words> Words, int categoryColors ) {
+    public WordsAdapter( Activity context, ArrayList<Words> Words, int categoryColors) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
@@ -36,11 +40,21 @@ public class WordsAdapter extends ArrayAdapter<Words> {
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext( )).inflate(
                     R.layout.list_item, parent, false);
-            listItemView.setBackgroundResource(mCategoryColors);
+           listItemView.setBackgroundResource(mCategoryColors);
         }
 
         // Get the {@link AndroidFlavor} object located at this position in the list
-        Words currentWord = getItem(position);
+        final Words currentWord = getItem(position);
+
+        //Find the Button in the list_item.xml with the ID
+        Button playButton = (Button) listItemView.findViewById(R.id.playButton);
+        mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongResource());
+        playButton.setOnClickListener(new View.OnClickListener( ) {
+            @Override
+            public void onClick( View view ) {
+                mediaPlayer.start();
+            }
+        });
 
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView nameTextView = (TextView) listItemView.findViewById(R.id.miwokWords);

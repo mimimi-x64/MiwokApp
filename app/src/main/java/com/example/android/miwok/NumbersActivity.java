@@ -18,16 +18,16 @@ public class NumbersActivity extends AppCompatActivity {
         //Instanciates Object with values
 
         //Add on ArrayList
-        numbers.add(new Words("lutti", "one", R.drawable.number_one));
-        numbers.add(new Words("lutti", "two", R.drawable.number_two));
-        numbers.add(new Words("lutti", "three", R.drawable.number_three));
-        numbers.add(new Words("lutti", "four", R.drawable.number_four));
-        numbers.add(new Words("lutti", "five", R.drawable.number_five));
-        numbers.add(new Words("lutti", "six", R.drawable.number_six));
-        numbers.add(new Words("lutti", "seven", R.drawable.number_seven));
-        numbers.add(new Words("lutti", "eight", R.drawable.number_eight));
-        numbers.add(new Words("lutti", "nine", R.drawable.number_nine));
-        numbers.add(new Words("lutti", "ten", R.drawable.number_ten));
+        numbers.add(new Words("lutti", "one", R.drawable.number_one, R.raw.number_one));
+        numbers.add(new Words("lutti", "two", R.drawable.number_two, R.raw.number_one));
+        numbers.add(new Words("lutti", "three", R.drawable.number_three, R.raw.number_one));
+        numbers.add(new Words("lutti", "four", R.drawable.number_four, R.raw.number_one));
+        numbers.add(new Words("lutti", "five", R.drawable.number_five, R.raw.number_one));
+        numbers.add(new Words("lutti", "six", R.drawable.number_six, R.raw.number_one));
+        numbers.add(new Words("lutti", "seven", R.drawable.number_seven, R.raw.number_one));
+        numbers.add(new Words("lutti", "eight", R.drawable.number_eight, R.raw.number_one));
+        numbers.add(new Words("lutti", "nine", R.drawable.number_nine, R.raw.number_one));
+        numbers.add(new Words("lutti", "ten", R.drawable.number_ten, R.raw.number_one));
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
