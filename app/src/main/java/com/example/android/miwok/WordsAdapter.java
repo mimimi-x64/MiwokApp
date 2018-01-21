@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -46,10 +48,10 @@ public class WordsAdapter extends ArrayAdapter<Words> {
         // Get the {@link AndroidFlavor} object located at this position in the list
         final Words currentWord = getItem(position);
 
-        //Find the Button in the list_item.xml with the ID
-        Button playButton = (Button) listItemView.findViewById(R.id.playButton);
-        mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongResource());
-        playButton.setOnClickListener(new View.OnClickListener( ) {
+        //Find the TextView in the list_item.xml with the ID
+        TextView linearTextView = (TextView) listItemView.findViewById(R.id.text_container);
+        //Set OnClickListener
+        linearTextView.setOnClickListener(new View.OnClickListener( ) {
             @Override
             public void onClick( View view ) {
                 mediaPlayer.start();
