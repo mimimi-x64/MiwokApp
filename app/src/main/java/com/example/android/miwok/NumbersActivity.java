@@ -49,12 +49,12 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener( ) {
             @Override
             public void onItemClick( AdapterView<?> adapterView, View view, int positon, long l ) {
-                releaseMediaPlayer();
+
                 Words words = numbers.get(positon) ;
-                MediaPlayer mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSongResource());
+                releaseMediaPlayer();
+                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSongResource());
                 mMediaPlayer.start();
                 mMediaPlayer.setOnCompletionListener(mCompletionListener);
-
             }
         });
     }

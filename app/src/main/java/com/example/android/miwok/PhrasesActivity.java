@@ -11,7 +11,13 @@ import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
+    private MediaPlayer.OnCompletionListener mOnCompletionListener = new MediaPlayer.OnCompletionListener( ) {
+        @Override
+        public void onCompletion( MediaPlayer mediaPlayer ) {
+            releaseMediaPlayer();
+        }
+    };
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -39,15 +45,10 @@ public class PhrasesActivity extends AppCompatActivity {
             @Override
             public void onItemClick( AdapterView<?> adapterView, View view, int position, long l ) {
                 Words words = phrasesWords.get(position);
-                MediaPlayer mediaPlayer = MediaPlayer.create(PhrasesActivity.this, words.getSongResource( ));
                 releaseMediaPlayer();
+                mediaPlayer = MediaPlayer.create(PhrasesActivity.this, words.getSongResource( ));
                 mediaPlayer.start( );
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener( ) {
-                    @Override
-                    public void onCompletion( MediaPlayer mediaPlayer ) {
-                        releaseMediaPlayer();
-                    }
-                });
+                mediaPlayer.setOnCompletionListener(mOnCompletionListener);
             }
         });
     }
