@@ -45,19 +45,6 @@ public class WordsAdapter extends ArrayAdapter<Words> {
 
         // Get the {@link AndroidFlavor} object located at this position in the list
         final Words currentWord = getItem(position);
-        /**
-         * First Self implementation of OnClickListener on each View.
-         *
-        //Find the Button in the list_item.xml with the ID
-        Button playButton = (Button) listItemView.findViewById(R.id.playButton);
-        mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongResource());
-        playButton.setOnClickListener(new View.OnClickListener( ) {
-            @Override
-            public void onClick( View view ) {
-                mediaPlayer.start();
-            }
-        });
-        */
 
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView nameTextView = (TextView) listItemView.findViewById(R.id.miwokWords);
@@ -73,9 +60,12 @@ public class WordsAdapter extends ArrayAdapter<Words> {
 
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
         ImageView iconView = (ImageView) listItemView.findViewById(R.id.imageList);
-        // Get the image resource ID from the current AndroidFlavor object and
-        // set the image to iconView
-        iconView.setImageResource( currentWord.getImageResource( ));
+
+        /**
+         * Commenting (or remove) the line bellow fixes bug on PhrasesActivity.
+         * Method setImageResource have been called twice. Even PhrasesActivity not having an image.
+         */
+        //iconView.setImageResource( currentWord.getImageResource( ));
 
         if (currentWord.checkImageResource()){
             iconView.setImageResource( currentWord.getImageResource( ));

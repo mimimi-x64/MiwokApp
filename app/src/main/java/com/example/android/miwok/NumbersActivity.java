@@ -13,7 +13,13 @@ import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mMediaPlayer;
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener( ) {
+        @Override
+        public void onCompletion( MediaPlayer mMediaPlayer ) {
+            releaseMediaPlayer();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +49,12 @@ public class NumbersActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener( ) {
             @Override
             public void onItemClick( AdapterView<?> adapterView, View view, int positon, long l ) {
-
-                Words words = numbers.get(positon) ;
-                MediaPlayer mediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSongResource());
                 releaseMediaPlayer();
-                mediaPlayer.start();
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener( ) {
-                    @Override
-                    public void onCompletion( MediaPlayer mediaPlayer ) {
-                        releaseMediaPlayer();
-                    }
-                });
+                Words words = numbers.get(positon) ;
+                MediaPlayer mMediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSongResource());
+                mMediaPlayer.start();
+                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+
             }
         });
     }
@@ -63,15 +64,15 @@ public class NumbersActivity extends AppCompatActivity {
      */
     private void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
-        if (mediaPlayer != null) {
+        if (mMediaPlayer != null) {
             // Regardless of the current state of the media player, release its resources
             // because we no longer need it.
-            mediaPlayer.release();
+            mMediaPlayer.release();
 
             // Set the media player back to null. For our code, we've decided that
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
-            mediaPlayer = null;
+            mMediaPlayer = null;
         }
     }
 }

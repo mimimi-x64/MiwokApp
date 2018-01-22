@@ -16,14 +16,10 @@ public class Words {
 
     private static final int NO_IMAGE = -1;
 
-    public Words( String MiwokTranslation, String DefaulTranslation ){
+    public Words( String MiwokTranslation, String DefaulTranslation, int songResourceId) {
         mMiwokTranslation = MiwokTranslation;
         mDefaulTranslation = DefaulTranslation;
-    }
-    public Words( String MiwokTranslation, String DefaulTranslation, int imageResourceId) {
-        mMiwokTranslation = MiwokTranslation;
-        mDefaulTranslation = DefaulTranslation;
-        mImageResourceID = imageResourceId;
+        mSongId = songResourceId;
     }
     public Words( String MiwokTranslation, String DefaulTranslation, int imageResourceId, int songResourceId) {
         mMiwokTranslation = MiwokTranslation;
