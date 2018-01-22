@@ -45,7 +45,9 @@ public class WordsAdapter extends ArrayAdapter<Words> {
 
         // Get the {@link AndroidFlavor} object located at this position in the list
         final Words currentWord = getItem(position);
-
+        /**
+         * First Self implementation of OnClickListener on each View.
+         *
         //Find the Button in the list_item.xml with the ID
         Button playButton = (Button) listItemView.findViewById(R.id.playButton);
         mediaPlayer = MediaPlayer.create(getContext(), currentWord.getSongResource());
@@ -55,6 +57,7 @@ public class WordsAdapter extends ArrayAdapter<Words> {
                 mediaPlayer.start();
             }
         });
+        */
 
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView nameTextView = (TextView) listItemView.findViewById(R.id.miwokWords);

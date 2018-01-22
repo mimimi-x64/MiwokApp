@@ -44,11 +44,21 @@ public class Words {
         return mImageResourceID;
     }
 
-    public int getSongResource(){
-        return mSongId;
-    }
-
     public boolean checkImageResource() {
         return mImageResourceID != NO_IMAGE;
+    }
+
+    @Override
+    public String toString() {
+        return "Words{" +
+                "mDefaulTranslation='" + mDefaulTranslation + '\'' +
+                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
+                ", mSongId=" + mSongId +
+                ", mImageResourceID=" + mImageResourceID +
+                '}';
+    }
+
+    public int getSongResource(){
+        return mSongId;
     }
 }

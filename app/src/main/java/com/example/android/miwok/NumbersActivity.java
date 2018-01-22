@@ -1,15 +1,19 @@
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
+
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,39 +21,58 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         // Create a list of numbers using Word.class
-        ArrayList<Words> numbers = new ArrayList<Words>();
+        final ArrayList<Words> numbers = new ArrayList<Words>();
         //Instanciates Object with values
 
         //Add on ArrayList
-        numbers.add(new Words("lutti", "one", R.drawable.number_one, R.raw.number_one));
-        numbers.add(new Words("lutti", "two", R.drawable.number_two, R.raw.number_one));
-        numbers.add(new Words("lutti", "three", R.drawable.number_three, R.raw.number_one));
-        numbers.add(new Words("lutti", "four", R.drawable.number_four, R.raw.number_one));
-        numbers.add(new Words("lutti", "five", R.drawable.number_five, R.raw.number_one));
-        numbers.add(new Words("lutti", "six", R.drawable.number_six, R.raw.number_one));
-        numbers.add(new Words("lutti", "seven", R.drawable.number_seven, R.raw.number_one));
-        numbers.add(new Words("lutti", "eight", R.drawable.number_eight, R.raw.number_one));
-        numbers.add(new Words("lutti", "nine", R.drawable.number_nine, R.raw.number_one));
-        numbers.add(new Words("lutti", "ten", R.drawable.number_ten, R.raw.number_one));
+        numbers.add(new Words("one", "lutti", R.drawable.number_one, R.raw.number_one));
+        numbers.add(new Words("two", "otiiko", R.drawable.number_two, R.raw.number_two));
+        numbers.add(new Words("three", "tolookosu", R.drawable.number_three, R.raw.number_three));
+        numbers.add(new Words("four", "oyyisa", R.drawable.number_four, R.raw.number_four));
+        numbers.add(new Words("five", "massokka", R.drawable.number_five, R.raw.number_five));
+        numbers.add(new Words("six", "temmokka", R.drawable.number_six, R.raw.number_six));
+        numbers.add(new Words("seven", "kenekaku", R.drawable.number_seven, R.raw.number_seven));
+        numbers.add(new Words("eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
+        numbers.add(new Words("nine", "wo’e", R.drawable.number_nine, R.raw.number_nine));
+        numbers.add(new Words("ten", "na’aacha", R.drawable.number_ten, R.raw.number_ten));
 
-        // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
-        // adapter knows how to create layouts for each item in the list, using the
-        // simple_list_item_1.xml layout resource defined in the Android framework.
-        // This list item layout contains a single {@link TextView}, which the adapter will set to
-        // display a single word.
-        WordsAdapter numbersAdapter = new WordsAdapter(this, numbers, R.color.category_numbers);
+        final WordsAdapter numbersAdapter = new WordsAdapter(this, numbers, R.color.category_numbers);
 
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // activity_numbers.xml layout file.
         ListView listView = (ListView) findViewById(R.id.list);
-
-        // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
-        // {@link ListView} will display list items for each word in the list of numbers.
-        // Do this by calling the setAdapter method on the {@link ListView} object and pass in
-        // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
         listView.setAdapter(numbersAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener( ) {
+            @Override
+            public void onItemClick( AdapterView<?> adapterView, View view, int positon, long l ) {
 
+                Words words = numbers.get(positon) ;
+                MediaPlayer mediaPlayer = MediaPlayer.create(NumbersActivity.this, words.getSongResource());
+                releaseMediaPlayer();
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener( ) {
+                    @Override
+                    public void onCompletion( MediaPlayer mediaPlayer ) {
+                        releaseMediaPlayer();
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * Clean up the media player by releasing its resources.
+     */
+    private void releaseMediaPlayer() {
+        // If the media player is not null, then it may be currently playing a sound.
+        if (mediaPlayer != null) {
+            // Regardless of the current state of the media player, release its resources
+            // because we no longer need it.
+            mediaPlayer.release();
+
+            // Set the media player back to null. For our code, we've decided that
+            // setting the media player to null is an easy way to tell that the media player
+            // is not configured to play an audio file at the moment.
+            mediaPlayer = null;
+        }
     }
 }
 

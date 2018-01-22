@@ -21,7 +21,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         if (family != null) {
             family.setOnClickListener(new OnClickListener(){
                 public void onClick(View view){
-                    Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                    Intent familyIntent = new Intent(MainActivity.this, FamillyActivity.class);
                     startActivity(familyIntent);
                 }
             });
