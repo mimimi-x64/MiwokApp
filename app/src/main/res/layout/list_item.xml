@@ -20,6 +20,8 @@
         android:orientation="vertical">
 
         <TextView
+            android:textColor="@drawable/color_black"
+            android:background="?android:attr/selectableItemBackground"
             android:textStyle="bold"
             android:id="@+id/miwokWords"
             android:layout_width="wrap_content"
