@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,5 +83,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+
+        Toast.makeText(this, String.valueOf(Integer.valueOf(android.os.Build.VERSION.SDK)), Toast.LENGTH_LONG).show();
     }
 }

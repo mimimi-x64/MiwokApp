@@ -1,5 +1,6 @@
 package com.example.android.miwok;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -42,6 +43,11 @@ public class ColorsActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colors);
+
+        android.support.v7.app.ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+
+
         audioManager = (AudioManager) ColorsActivity.this.getSystemService(Context.AUDIO_SERVICE);
 
         //First, Create a ArrayList and put some data man!
