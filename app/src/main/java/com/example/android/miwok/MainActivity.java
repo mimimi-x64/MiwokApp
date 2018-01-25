@@ -15,70 +15,80 @@
  */
 package com.example.android.miwok;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    FragmentPagerAdapter adapterViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        // Listener Button for numbersActivity & Crio Objeto Button
-        TextView numbers = (TextView) findViewById(R.id.numbers);
+        ViewPager vpPager = (ViewPager) findViewById(R.id.pager);
+        adapterViewPager = new MyPagerAdapter(this, getSupportFragmentManager());
+        vpPager.setAdapter(adapterViewPager);
+        vpPager.setCurrentItem(1);
+        vpPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
-        //Add Listener to view
-        if (numbers != null) {
-            numbers.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    //Criar um novo Intent
-                    Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
-                    startActivity(numbersIntent);
-                }
-            });
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab);
+        tabLayout.setupWithViewPager(vpPager);
+    }
+
+    public static class MyPagerAdapter extends FragmentPagerAdapter {
+        private static int NUM_ITEMS = 4;
+        private Context mContext;
+
+        public MyPagerAdapter( Context context, FragmentManager fragmentManager ) {
+            super(fragmentManager);
+            mContext = context;
         }
 
-        // Listener Button for ColorsActivity
-        TextView colors = (TextView) findViewById(R.id.colors);
-        if (colors != null) {
-            colors.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
-                    startActivity(colorsIntent);
-                }
-            });
+        // Returns total number of pages
+        @Override
+        public int getCount() {
+            return NUM_ITEMS;
         }
 
-        // Listener Button for PhrasesActivity
-        TextView phrases = (TextView) findViewById(R.id.phrases);
-        if (phrases != null) {
-            phrases.setOnClickListener(new OnClickListener(){
-                @Override
-                public void onClick(View view){
-                    Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
-                    startActivity(phrasesIntent);
-                }
-            });
+        // Returns the fragment to display for that page
+        @Override
+        public Fragment getItem( int position ) {
+            switch (position) {
+                case 0: // Fragment # 0 - This will show FirstFragment
+                    // return FirstFragment.newInstance(0, "Page # 1");
+                    return new ColorsFragment( );
+                case 1: // Fragment # 0 - This will show FirstFragment different title
+                    return new NumbersFragment( );
+                case 2: // Fragment # 1 - This will show SecondFragment
+                    return new FamillyFragment( );
+                case 3:
+                    return new PhrasesFragment( );
+                default:
+                    return null;
+            }
         }
 
-        //Listener Button for Family
-        TextView family = (TextView) findViewById(R.id.family);
-        if (family != null) {
-            family.setOnClickListener(new OnClickListener(){
-                public void onClick(View view){
-                    Intent familyIntent = new Intent(MainActivity.this, FamillyActivity.class);
-                    startActivity(familyIntent);
-                }
-            });
+        // Returns the page title for the top indicator
+        @Override
+        public CharSequence getPageTitle( int position ) {
+            if (position == 0) {
+                return mContext.getString(R.string.category_numbers);
+            } else if (position == 1) {
+                return mContext.getString(R.string.category_family);
+            } else if (position == 2) {
+                return mContext.getString(R.string.category_colors);
+            } else {
+                return mContext.getString(R.string.category_phrases);
+            }
         }
     }
 }
