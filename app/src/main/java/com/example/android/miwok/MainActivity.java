@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         //Add Listener to view
         if (numbers != null) {
             numbers.setOnClickListener(new OnClickListener(){
-
                 @Override
                 public void onClick(View view){
                     //Criar um novo Intent
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         TextView colors = (TextView) findViewById(R.id.colors);
         if (colors != null) {
             colors.setOnClickListener(new OnClickListener(){
-
                 @Override
                 public void onClick(View view){
                     Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
@@ -82,8 +80,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-        Toast.makeText(this, String.valueOf(Integer.valueOf(android.os.Build.VERSION.SDK)), Toast.LENGTH_LONG).show();
     }
 }
